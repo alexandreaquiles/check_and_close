@@ -1,0 +1,70 @@
+<style>
+body {
+  min-width:357px;
+  overflow-x:hidden;
+}
+</style>
+
+<script>
+chrome.windows.getCurrent(function(window) {
+	chrome.tabs.getAllInWindow(window.id, function(tabs) {
+		for (var i = 0, tab; tab = tabs[i]; i++) {
+			addCheckbox(tab.title);
+			addTitle(tab.title);
+			addBR();
+		}
+		addButton();
+	});
+    });
+
+function addCheckbox(title){
+	var theCheckbox = document.createElement("input");
+	theCheckbox.type = "checkbox";
+	theCheckbox.name = "checkboxes";
+	theCheckbox.value = title;
+	document.body.appendChild(theCheckbox);
+}
+	
+function addTitle(originalTitle){
+	var title = originalTitle.slice(0,50);
+	if(originalTitle.length > 50)
+		title += "...";
+	var theTitle = document.createTextNode(title);
+	document.body.appendChild(theTitle);
+}
+
+function addBR(){
+	var theBR = document.createElement("br");
+	document.body.appendChild(theBR);
+}
+
+function addButton(){
+	var theButton = document.createElement("button");
+	var label = document.createTextNode("Close");
+	theButton.appendChild(label);
+	theButton.onclick = closeThem;
+	
+	document.body.appendChild(theButton);
+}
+
+function closeThem(){
+	var checkboxes = document.getElementsByName("checkboxes");
+	for(var i = 0; i < checkboxes.length; i++){
+		var checkbox = checkboxes[i];
+		if(checkbox.checked){
+			appendToLog(checkbox.value);
+		}
+	}
+}
+
+function appendToLog(logLine) {
+	document.getElementById('log').appendChild(document.createElement('div')).innerText = "> " + logLine;
+}
+</script>
+
+<body>
+<div id="tabs">
+</div>
+<div id="log">
+</div>
+</body>

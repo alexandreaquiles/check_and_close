@@ -1,0 +1,12 @@
+{
+  "name": "Check and Close",
+  "version": "0.1",
+  "description": "Display windows as checkboxes, so you can choose which to close.",
+  "browser_action": {
+    "default_icon": "check_and_close.png",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}
