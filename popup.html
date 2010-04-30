@@ -6,22 +6,24 @@ body {
 </style>
 
 <script>
+
 chrome.windows.getCurrent(function(window) {
 	chrome.tabs.getAllInWindow(window.id, function(tabs) {
 		for (var i = 0, tab; tab = tabs[i]; i++) {
-			addCheckbox(tab.title);
+			addCheckbox(tab.id);
 			addTitle(tab.title);
 			addBR();
 		}
 		addButton();
 	});
-    });
+});
 
-function addCheckbox(title){
+
+function addCheckbox(id){
 	var theCheckbox = document.createElement("input");
 	theCheckbox.type = "checkbox";
 	theCheckbox.name = "checkboxes";
-	theCheckbox.value = title;
+	theCheckbox.value = id;
 	document.body.appendChild(theCheckbox);
 }
 	
@@ -53,6 +55,9 @@ function closeThem(){
 		var checkbox = checkboxes[i];
 		if(checkbox.checked){
 			appendToLog(checkbox.value);
+			chrome.tabs.remove(parseInt(checkbox.value), function(){
+				window.close();
+			});
 		}
 	}
 }
