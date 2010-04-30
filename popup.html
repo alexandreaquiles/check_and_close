@@ -54,7 +54,6 @@ function closeThem(){
 	for(var i = 0; i < checkboxes.length; i++){
 		var checkbox = checkboxes[i];
 		if(checkbox.checked){
-			appendToLog(checkbox.value);
 			chrome.tabs.remove(parseInt(checkbox.value), function(){
 				window.close();
 			});
