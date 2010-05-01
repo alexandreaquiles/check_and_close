@@ -1,0 +1,4 @@
+KNOWN ISSUES
+
+1. Blank texts when loading tabs
+2. "Close" button should close extension popup when no tab is selected.
