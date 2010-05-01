@@ -2,6 +2,8 @@
 body {
   min-width:357px;
   overflow-x:hidden;
+  font-family:arial, sans-serif; 
+  font-size:0.875em
 }
 </style>
 
@@ -9,6 +11,7 @@ body {
 
 chrome.windows.getCurrent(function(window) {
 	chrome.tabs.getAllInWindow(window.id, function(tabs) {
+		addCheckAll();
 		for (var i = 0, tab; tab = tabs[i]; i++) {
 			addCheckbox(tab.id);
 			addTitle(tab.title);
@@ -18,6 +21,17 @@ chrome.windows.getCurrent(function(window) {
 	});
 });
 
+function addCheckAll(){
+	var theCheckAllBox = document.createElement("input");
+	theCheckAllBox.type = "checkbox";
+	theCheckAllBox.name = "checkAll";
+	theCheckAllBox.id = "checkAll";
+	theCheckAllBox.checked = false;
+	theCheckAllBox.onclick = checkUncheck;
+	document.body.appendChild(theCheckAllBox);
+	addTitle("All");
+	addBR();
+}
 
 function addCheckbox(id){
 	var theCheckbox = document.createElement("input");
@@ -28,8 +42,8 @@ function addCheckbox(id){
 }
 	
 function addTitle(originalTitle){
-	var title = originalTitle.slice(0,50);
-	if(originalTitle.length > 50)
+	var title = originalTitle.slice(0,45);
+	if(originalTitle.length > 45)
 		title += "...";
 	var theTitle = document.createTextNode(title);
 	document.body.appendChild(theTitle);
@@ -61,14 +75,21 @@ function closeThem(){
 	}
 }
 
-function appendToLog(logLine) {
-	document.getElementById('log').appendChild(document.createElement('div')).innerText = "> " + logLine;
+function getCheckAll(){
+	var checkAll = document.getElementById("checkAll");
+	return checkAll.checked;
 }
+
+function checkUncheck() {
+	var checkAll = getCheckAll();
+	var checkboxes = document.getElementsByName("checkboxes");
+	for(var i = 0; i < checkboxes.length; i++){
+		var checkbox = checkboxes[i];
+		checkbox.checked = checkAll;
+	}
+}
+
 </script>
 
 <body>
-<div id="tabs">
-</div>
-<div id="log">
-</div>
 </body>
