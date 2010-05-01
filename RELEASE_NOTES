@@ -1,0 +1,9 @@
+RELEASE NOTES
+
+0.2
+Added check/uncheck all functionality.
+Changed fonts to Sans-Serif.
+Removed logging methods.
+
+0.1 
+Closing tabs.
