@@ -1,6 +1,7 @@
 {
   "name": "Check and Close",
   "version": "0.3",
+  "icons": {"32": "images/check_and_close_32.png", "48": "images/check_and_close_48.png", "128": "images/check_and_close_128.png"},
   "description": "Displays all the tabs on the current window as checkboxes, so that you can choose which to close.",
   "browser_action": {
     "default_icon": "images/check_and_close.png",
