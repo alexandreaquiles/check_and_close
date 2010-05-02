@@ -1,5 +1,8 @@
 RELEASE NOTES
 
+0.4
+Added screenshot and icons.
+
 0.3
 Issue 1 - Blank text when loading tabs - corrected.
 Issue 2 - "Close" button should close popup when no tab is selected - corrected.
