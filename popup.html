@@ -41,10 +41,10 @@ function addCheckbox(id){
 	document.body.appendChild(theCheckbox);
 }
 	
-function addTitle(originalTitle){
-	var title = originalTitle.slice(0,45);
-	if(originalTitle.length > 45)
-		title += "...";
+function addTitle(title){
+	if(title != undefined && title.length > 45) {
+		title = title.slice(0,45) + "...";
+	}
 	var theTitle = document.createTextNode(title);
 	document.body.appendChild(theTitle);
 }
@@ -68,11 +68,10 @@ function closeThem(){
 	for(var i = 0; i < checkboxes.length; i++){
 		var checkbox = checkboxes[i];
 		if(checkbox.checked){
-			chrome.tabs.remove(parseInt(checkbox.value), function(){
-				window.close();
-			});
+			chrome.tabs.remove(parseInt(checkbox.value));
 		}
 	}
+	window.close();
 }
 
 function getCheckAll(){
