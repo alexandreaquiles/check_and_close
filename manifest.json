@@ -3,7 +3,7 @@
   "version": "0.2",
   "description": "Displays all the tabs on the current window as checkboxes, so that you can choose which to close.",
   "browser_action": {
-    "default_icon": "check_and_close.png",
+    "default_icon": "images/check_and_close.png",
     "popup": "popup.html"
   },
   "permissions": [
