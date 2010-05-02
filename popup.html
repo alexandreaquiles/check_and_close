@@ -17,6 +17,7 @@ chrome.windows.getCurrent(function(window) {
 			addTitle(tab.title);
 			addBR();
 		}
+		addBR();
 		addButton();
 	});
 });
@@ -29,7 +30,7 @@ function addCheckAll(){
 	theCheckAllBox.checked = false;
 	theCheckAllBox.onclick = checkUncheck;
 	document.body.appendChild(theCheckAllBox);
-	addTitle("All");
+	addBR();
 	addBR();
 }
 
